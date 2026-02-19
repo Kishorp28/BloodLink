@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/light_bg">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Firebase Diagnostic Test"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_dark"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/testAuthBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1️⃣ Test Authentication"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/testWriteBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2️⃣ Test Database Write (Rules Check)"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/testReadBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3️⃣ Read Inventory Data"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/loadDataBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4️⃣ Load Sample Data"
+        android:layout_marginBottom="16dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/statusView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Click buttons above to test Firebase configuration"
+            android:textSize="14sp"
+            android:textColor="@color/text_dark"
+            android:padding="12dp"
+            android:background="#f0f0f0" />
+
+    </ScrollView>
+
+</LinearLayout>

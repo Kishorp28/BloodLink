@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">BloodLink</string>
+    <string name="hello">Hello,</string>
+    <string name="emergency_blood_request">Emergency Blood Request</string>
+    <string name="donate_now">Donate Now</string>
+    <string name="blood_availability">Blood Availability</string>
+    <string name="see_all">See all</string>
+    <string name="nearby_donors">Nearby Donors</string>
+    <string name="view_map">View Map</string>
+    <string name="km">km</string>
+    <string name="available">Available</string>
+    <string name="low">Low</string>
+    <string name="critical">Critical</string>
+    <string name="blood_status">%1$s : %2$s</string>
+    <string name="donor_info">%1$s | %2$s | %3$s</string>
+    <string name="unknown_donor">Unknown donor</string>
+    <string name="unknown_group">Unknown</string>
+    <string name="unknown_distance">Distance unavailable</string>
+
+    <string-array name="blood_groups_array">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>O+</item>
+        <item>O-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>Any</item>
+    </string-array>
+</resources>

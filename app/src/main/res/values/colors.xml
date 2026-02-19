@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ═══════════════════════════════════════ -->
+    <!-- Blood Theme - Primary Palette          -->
+    <!-- ═══════════════════════════════════════ -->
+    <color name="primary_red">#C62828</color>
+    <color name="primary_red_light">#EF5350</color>
+    <color name="primary_red_dark">#8E0000</color>
+    <color name="primary_red_surface">#FFEBEE</color>
+
+    <!-- Accent / Secondary -->
+    <color name="accent_warm">#FF7043</color>
+    <color name="accent_warm_light">#FBE9E7</color>
+    <color name="accent_gold">#FFB300</color>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- Neutrals                               -->
+    <!-- ═══════════════════════════════════════ -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray_50">#FFFAFAFA</color>
+    <color name="gray_100">#FFF5F5F5</color>
+    <color name="gray_200">#FFEEEEEE</color>
+    <color name="gray_300">#FFE0E0E0</color>
+    <color name="gray_500">#FF9E9E9E</color>
+    <color name="gray_700">#FF616161</color>
+    <color name="gray_900">#FF212121</color>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- Status Colors                          -->
+    <!-- ═══════════════════════════════════════ -->
+    <color name="status_available">#2E7D32</color>
+    <color name="status_available_light">#E8F5E9</color>
+    <color name="status_low">#F57F17</color>
+    <color name="status_low_light">#FFF8E1</color>
+    <color name="status_critical">#D32F2F</color>
+    <color name="status_critical_light">#FFEBEE</color>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- Blood Type Colors                      -->
+    <!-- ═══════════════════════════════════════ -->
+    <color name="blood_bg_light">#FFCDD2</color>
+    <color name="blood_text">#B71C1C</color>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- Card & Surface                         -->
+    <!-- ═══════════════════════════════════════ -->
+    <color name="card_background">#FFFFFFFF</color>
+    <color name="emergency_bg">#D32F2F</color>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- Text Colors                            -->
+    <!-- ═══════════════════════════════════════ -->
+    <color name="text_dark">#FF212121</color>
+    <color name="text_light">#FF757575</color>
+    <color name="light_bg">#FFF5F5F5</color>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- Bottom Nav & Drawer                    -->
+    <!-- ═══════════════════════════════════════ -->
+    <color name="bottom_nav_bg">@color/primary_red</color>
+    <color name="nav_item_active">#FFFFFFFF</color>
+    <color name="nav_item_inactive">#B0FFFFFF</color>
+    <color name="drawer_header_start">#C62828</color>
+    <color name="drawer_header_end">#8E0000</color>
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- Logout / Danger Actions                -->
+    <!-- ═══════════════════════════════════════ -->
+    <color name="logout_bg">#D32F2F</color>
+    <color name="logout_text">#FFFFFF</color>
+</resources>

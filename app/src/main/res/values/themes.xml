@@ -1,0 +1,71 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Blood" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/primary_red</item>
+        <item name="colorPrimaryContainer">@color/primary_red_surface</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimaryContainer">@color/primary_red_dark</item>
+
+        <!-- Secondary -->
+        <item name="colorSecondary">@color/accent_warm</item>
+        <item name="colorSecondaryContainer">@color/accent_warm_light</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Background -->
+        <item name="android:colorBackground">@color/gray_50</item>
+        <item name="colorOnBackground">@color/gray_900</item>
+
+        <!-- Surface -->
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/gray_900</item>
+        <item name="colorSurfaceVariant">@color/gray_100</item>
+
+        <!-- Error / Danger -->
+        <item name="colorError">@color/status_critical</item>
+
+        <!-- Status Bar - Blood Red -->
+        <item name="android:statusBarColor">@color/primary_red</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Navigation Bar (bottom system bar) -->
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
+
+    <style name="Theme.Blood" parent="Base.Theme.Blood" />
+    <style name="Theme.Blood.NoActionBar" parent="Base.Theme.Blood" />
+
+    <!-- ═══════════ Bottom Navigation Style ═══════════ -->
+    <style name="BottomNavStyle">
+        <item name="android:background">@color/white</item>
+        <item name="itemIconTint">@color/bottom_nav_colors</item>
+        <item name="itemTextColor">@color/bottom_nav_colors</item>
+        <item name="itemActiveIndicatorStyle">@style/BottomNavIndicator</item>
+    </style>
+
+    <style name="BottomNavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/primary_red_dark</item>
+    </style>
+
+    <!-- ═══════════ Status Badge Styles ═══════════ -->
+    <style name="StatusBadge" />
+
+    <style name="StatusBadge.Available">
+        <item name="android:background">@color/status_available_light</item>
+        <item name="android:textColor">@color/status_available</item>
+    </style>
+
+    <style name="StatusBadge.Low">
+        <item name="android:background">@color/status_low_light</item>
+        <item name="android:textColor">@color/status_low</item>
+    </style>
+
+    <style name="StatusBadge.Critical">
+        <item name="android:background">@color/status_critical_light</item>
+        <item name="android:textColor">@color/status_critical</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

@@ -1,0 +1,52 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        
+        "donationHistory": {
+          ".read": "$uid === auth.uid",
+          ".write": "$uid === auth.uid"
+        },
+        
+        "totalDonations": {
+          ".write": "$uid === auth.uid"
+        },
+        
+        "lastDonationDate": {
+          ".write": "$uid === auth.uid"
+        }
+      },
+      
+      ".read": "auth != null"
+    },
+    
+    "inventory": {
+      ".read": true,
+      
+      "$bloodType": {
+        ".write": "auth != null"
+      }
+    },
+    
+    "blood_requests": {
+      ".read": true,
+      
+      "$requestId": {
+        ".write": "auth != null"
+      }
+    },
+    
+    "blood_donations": {
+      ".read": "auth != null",
+      
+      "$donationId": {
+        ".write": "auth != null"
+      }
+    },
+    
+    ".read": "auth != null",
+    ".write": "auth != null"
+  }
+}

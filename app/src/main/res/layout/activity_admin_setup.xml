@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_50"
+    android:fitsSystemWindows="true">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Header Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Admin Setup"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/gray_900"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Initialize Firebase with initial blood inventory data"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_700" />
+            </LinearLayout>
+
+            <!-- Action Buttons -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/loadDataBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Load Initial Inventory Data"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/primary_red"
+                        app:cornerRadius="8dp"
+                        android:paddingVertical="14dp"
+                        android:layout_marginBottom="12dp"
+                        android:drawableStart="@android:drawable/ic_menu_upload"
+                        android:drawablePadding="8dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/refreshBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Refresh Data"
+                        android:textSize="16sp"
+                        android:textColor="@color/primary_red"
+                        app:backgroundTint="@color/gray_200"
+                        app:cornerRadius="8dp"
+                        android:paddingVertical="14dp"
+                        android:layout_marginBottom="12dp"
+                        android:drawableStart="@drawable/ic_refresh"
+                        android:drawablePadding="8dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/clearDataBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Clear All Data"
+                        android:textSize="16sp"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/status_critical"
+                        app:cornerRadius="8dp"
+                        android:paddingVertical="14dp"
+                        android:drawableStart="@android:drawable/ic_menu_delete"
+                        android:drawablePadding="8dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Current Inventory Display -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Inventory in Firebase"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/gray_900"
+                android:layout_marginBottom="12dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="@color/white">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxHeight="400dp">
+
+                    <TextView
+                        android:id="@+id/inventoryDisplay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Loading..."
+                        android:textSize="14sp"
+                        android:textColor="@color/gray_900"
+                        android:fontFamily="monospace"
+                        android:padding="16dp"
+                        android:lineSpacingExtra="4dp" />
+                </ScrollView>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
