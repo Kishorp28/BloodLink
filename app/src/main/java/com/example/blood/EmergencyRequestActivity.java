@@ -34,7 +34,7 @@ import java.util.List;
 import com.example.blood.utils.FirebaseHelper;
 import androidx.annotation.NonNull;
 
-public class EmergencyRequestActivity extends AppCompatActivity {
+public class EmergencyRequestActivity extends BaseActivity {
 
     private FirebaseHelper firebaseHelper;
     private AutoCompleteTextView bloodTypeSpinner;

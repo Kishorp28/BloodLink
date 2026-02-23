@@ -24,7 +24,7 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.ViewFlipper;
 
-public class Login extends AppCompatActivity {
+public class Login extends BaseActivity {
 
     EditText email, password;
     Button login, signup;

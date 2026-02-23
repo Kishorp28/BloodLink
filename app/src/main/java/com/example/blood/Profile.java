@@ -19,7 +19,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
-public class Profile extends AppCompatActivity {
+public class Profile extends BaseActivity {
 
     private TextView tvName, tvEmail, tvMobile, tvCity, tvAddress, tvBloodGroup, tvInitial, tvTotalDonations;
     private Button btnLogout;

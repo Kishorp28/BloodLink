@@ -23,7 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
-public class BloodInventoryActivity extends AppCompatActivity {
+public class BloodInventoryActivity extends BaseActivity {
 
     private LinearLayout inventoryContainer;
     private TextView tvTotalUnits;

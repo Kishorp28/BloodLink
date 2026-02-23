@@ -25,14 +25,16 @@
             android:flipInterval="4000">
 
             <!-- Slide 1: Main carousel image -->
+
+            <!-- Slide 2: Gradient overlay with text -->
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/carsoul"
+                android:contentDescription="Blood donation awareness"
                 android:scaleType="centerCrop"
-                android:contentDescription="Blood donation awareness" />
+                android:src="@drawable/carsoul" />
 
-            <!-- Slide 2: Gradient overlay with text -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">

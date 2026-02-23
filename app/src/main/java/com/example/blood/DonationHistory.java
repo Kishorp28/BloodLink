@@ -20,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class DonationHistory extends AppCompatActivity {
+public class DonationHistory extends BaseActivity {
 
     LinearLayout donationListContainer, compatibleRequestsContainer;
     TextView tvDonationCount, tvTotalVolume, tvHeroLevel, tvLivesSaved, tvEligibilityStatus, tvRequestsHeader;

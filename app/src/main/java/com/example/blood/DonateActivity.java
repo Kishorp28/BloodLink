@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.blood.utils.FirebaseHelper;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class DonateActivity extends AppCompatActivity {
+public class DonateActivity extends BaseActivity {
     
     private static final String TAG = "DonateActivity";
 

@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class RequestBlood extends AppCompatActivity {
+public class RequestBlood extends BaseActivity {
 
     EditText edtUnits, edtLocation, edtPatientName;
     Button btnA_plus, btnA_minus, btnB_plus, btnB_minus, btnAB_plus, btnAB_minus, btnO_plus, btnO_minus;
@@ -197,20 +197,20 @@ public class RequestBlood extends AppCompatActivity {
 
         databaseReference.child(requestId).setValue(request).addOnSuccessListener(aVoid -> {
             Toast.makeText(this, "Blood request created! (CRUD - Create)", Toast.LENGTH_SHORT).show();
-            notifyMatchingDonors(selectedBloodGroup, patientName, selectedUrgency);
+            notifyMatchingDonors(selectedBloodGroup, patientName, selectedUrgency, location);
             finish();
         }).addOnFailureListener(e -> {
             Toast.makeText(this, "Failed to create request: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
     }
 
-    private void notifyMatchingDonors(String bloodGroup, String patientName, String urgency) {
+    private void notifyMatchingDonors(String bloodGroup, String patientName, String urgency, String location) {
         String time = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
         
         // 1. Save to Global Notifications so Everyone sees it in their bell icon page
         Map<String, Object> publicNotif = new HashMap<>();
-        publicNotif.put("title", "URGENT: " + bloodGroup + " Needed");
-        publicNotif.put("body", patientName + " needs " + bloodGroup + " at " + urgency + " level.");
+        publicNotif.put("title", "BLOOD NEEDED: " + bloodGroup);
+        publicNotif.put("body", patientName + " is requesting " + bloodGroup + " blood at " + location + ". Urgency: " + urgency);
         publicNotif.put("time", time);
         publicNotif.put("type", "PUBLIC");
         

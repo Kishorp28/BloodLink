@@ -2,6 +2,7 @@ package com.example.blood;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.example.blood.utils.FirebaseHelper;
 import com.example.blood.models.BloodInventory;
 
-public class Dashboard extends AppCompatActivity {
+public class Dashboard extends BaseActivity {
 
     TextView user, tvQuote;
     ViewGroup bloodContainer, donorContainer;
@@ -132,17 +133,36 @@ public class Dashboard extends AppCompatActivity {
         fetchCurrentUserLocationAndLoadDonors();
         loadBloodInventory();
         loadEmergencyRequests();
-        checkNotificationPermission();
+        checkAndRequestPermissions();
         setupBottomNavigation();
     }
 
-    private void checkNotificationPermission() {
+    private void checkAndRequestPermissions() {
+        java.util.List<String> permissionsNeeded = new java.util.ArrayList<>();
+        
+        // SMS Permission
+        if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) 
+                != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            permissionsNeeded.add(android.Manifest.permission.SEND_SMS);
+        }
+        
+        // Location Permissions
+        if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) 
+                != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            permissionsNeeded.add(android.Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+        
+        // Notification Permission (Android 13+)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
             if (androidx.core.content.ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) 
                     != android.content.pm.PackageManager.PERMISSION_GRANTED) {
-                androidx.core.app.ActivityCompat.requestPermissions(this, 
-                        new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 101);
+                permissionsNeeded.add(android.Manifest.permission.POST_NOTIFICATIONS);
             }
+        }
+        
+        if (!permissionsNeeded.isEmpty()) {
+            androidx.core.app.ActivityCompat.requestPermissions(this, 
+                    permissionsNeeded.toArray(new String[0]), 101);
         }
     }
 
@@ -161,7 +181,7 @@ public class Dashboard extends AppCompatActivity {
                     }
                     myBloodGroup = snapshot.child("bloodType").getValue(String.class);
                     loadNearbyDonors();
-                    startBloodRequestListener();
+                    // startBloodRequestListener(); // Now handled in BaseActivity
                 }
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
@@ -436,53 +456,11 @@ public class Dashboard extends AppCompatActivity {
                 });
     }
 
-    private void startBloodRequestListener() {
-        if (bloodRequestListener != null) return;
-        
-        databaseReference.child("blood_requests").limitToLast(1)
-            .addChildEventListener(new com.google.firebase.database.ChildEventListener() {
-                private boolean isInitialLoad = true;
-                
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot snapshot, @androidx.annotation.Nullable String previousChildName) {
-                    if (isInitialLoad) {
-                        isInitialLoad = false;
-                        return;
-                    }
-                    
-                    String bloodGroup = snapshot.child("bloodGroup").getValue(String.class);
-                    String patientName = snapshot.child("patientName").getValue(String.class);
-                    String urgency = snapshot.child("urgency").getValue(String.class);
-                    String creatorId = snapshot.child("createdBy").getValue(String.class);
-                    
-                    // Do NOT notify if I am the one who created this request
-                    if (userId != null && userId.equals(creatorId)) {
-                        return;
-                    }
-
-                    // Notify ALL users as requested
-                    String title = "Urgent " + bloodGroup + " Blood Needed!";
-                    String message = patientName + " needs " + bloodGroup + " blood (" + urgency + "). Tap to help!";
-                    com.example.blood.utils.NotificationHelper.showNotification(Dashboard.this, title, message);
-                    
-                    // Visual cue on the notification bell
-                    notificationBtn.setBackgroundTintList(android.content.res.ColorStateList.valueOf(
-                            android.graphics.Color.parseColor("#FFCDD2"))); // Light Red
-                }
-
-                @Override public void onChildChanged(@NonNull DataSnapshot snapshot, @androidx.annotation.Nullable String previousChildName) {}
-                @Override public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
-                @Override public void onChildMoved(@NonNull DataSnapshot snapshot, @androidx.annotation.Nullable String previousChildName) {}
-                @Override public void onCancelled(@NonNull com.google.firebase.database.DatabaseError error) {}
-            });
-    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (bloodRequestListener != null) {
-            databaseReference.child("BloodRequests").removeEventListener(bloodRequestListener);
-        }
+        // Listener removal handled in BaseActivity via onStop()
     }
 
     // Helper class for sorting

@@ -23,7 +23,7 @@ import com.google.firebase.FirebaseException;
 import androidx.annotation.NonNull;
 import java.util.concurrent.TimeUnit;
 
-public class Signup extends AppCompatActivity {
+public class Signup extends BaseActivity {
 
     EditText name, mobile, email, password, city, address, otpInput;
     com.google.android.material.textfield.MaterialAutoCompleteTextView bloodgroup;

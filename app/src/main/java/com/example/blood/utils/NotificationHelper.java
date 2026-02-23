@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -24,29 +25,42 @@ public class NotificationHelper {
 
         Intent intent = new Intent(context, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, (int) System.currentTimeMillis(), intent, 
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_map) // Using existing drawable
+                .setSmallIcon(R.drawable.logo) // Use app logo
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setAutoCancel(true)
                 .setVibrate(new long[]{0, 500, 200, 500})
+                .setAutoCancel(true)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setSound(android.provider.Settings.System.DEFAULT_NOTIFICATION_URI)
                 .setContentIntent(pendingIntent);
+
+        // Add a "full screen intent" hint for some devices to force the POP effect
+        builder.setFullScreenIntent(pendingIntent, true);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         
         // Permission check for Android 13+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            // Assume permission is granted for this demo, usually should check
+            if (androidx.core.content.ContextCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) 
+                    != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+
+                Log.e("NotificationHelper", "POST_NOTIFICATIONS permission not granted");
+                return;
+            }
         }
         
-        notificationManager.notify((int) System.currentTimeMillis(), builder.build());
+        try {
+            notificationManager.notify((int) System.currentTimeMillis(), builder.build());
+        } catch (SecurityException e) {
+            Log.e("NotificationHelper", "SecurityException: " + e.getMessage());
+        }
     }
 
     private static void createNotificationChannel(Context context) {

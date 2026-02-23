@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AnalyticsActivity extends AppCompatActivity {
+public class AnalyticsActivity extends BaseActivity {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
